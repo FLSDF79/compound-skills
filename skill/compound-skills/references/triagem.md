@@ -52,37 +52,37 @@ duro de 5.000 caracteres e formato de cue."
 
 **PadrÃ£o:** duas skills disputando "organizar minhas notas".
 
-- A saÃ­da correta **nÃ£o* Ã© ajustar as descriÃ§Ãµes para conviverem. DescriÃ§Ã£o ajustada
-  volta a colidir na prÃ³xima edigÃ£o â€” Ã© remendo, nÃ£o conserto.
+- A saÃ­da correta **nÃ£o** Ã© ajustar as descriÃ§Ãµes para conviverem. DescriÃ§Ã£o ajustada
+  volta a colidir na prÃ³xima ediÃ§Ã£o â€” Ã© remendo, nÃ£o conserto.
 - **Funda o domÃ­nio numa skill e stube a outra.**
-- Precedente real: duas skills irmÃ¡s viraram uma fundida, e as duas antigas foram
+- Precedente real: duas skills irmÃ£s viraram uma fundida, e as duas antigas foram
   arquivadas. Deu certo, e o ecossistema ficou menor e mais capaz.
 
-## Destino 1 â€” Descartar
+## Destino 1 â€” descartar
 
 **Caso D:** "Aquele prompt especÃ­fico que resolveu o relatÃ³rio do dia 12."
 Contexto irrepetÃ­vel. O valor estava no resultado, que jÃ¡ foi entregue.
 
 **Caso E:** "A forma como reescrevi aquele parÃ¡grafo ficou boa."
-Qualidade pontual de escrita raramente Ã© padrÃ£o reutilizÃ¡vel â€” sim julgamento aplicado
+Qualidade pontual de escrita raramente Ã© padrÃ£o reutilizÃ¡vel â€” Ã© julgamento aplicado
 ao caso.
 
-## Destino 2 â€” Regra no Ã­ndice
+## Destino 2 â€” regra no Ã­ndice
 
 **Caso F:** "Nunca quero automaÃ§Ã£o chamando LLM sem prefixo de guarda, teto horÃ¡rio e
 circuit breaker."
 Vale em todo canal, nÃ£o tem gatilho, vale sempre. Uma linha, nÃ£o uma skill.
 
-## Destino 3 â€” ImplementaÃ§Ã£o direta
+## Destino 3 â€” implementaÃ§Ã£o direta
 
 **Caso G:** "Preciso monitorar consumo semanalmente."
 Virou trÃªs scripts e um agendador. Nenhuma skill envolvida, custo zero de contexto,
 e roda sozinho.
 
-LiÃ§Ã£o : **automaÃ§Ã£o recorrente Ã© infraestrutura, nÃ£o skill.** Skill Ã© o que precisa de
+LiÃ§Ã£o: **automaÃ§Ã£o recorrente Ã© infraestrutura, nÃ£o skill.** Skill Ã© o que precisa de
 julgamento no momento de usar.
 
-## Destino 4 â€” Ledger
+## Destino 4 â€” ledger
 
 **Caso H:** "Esse jeito de cruzar duas notas semanticamente distantes parece
 poderoso."
@@ -91,4 +91,15 @@ ideaÃ§Ã£o â€” aÃ­ sobe.
 
 ## Fronteira difÃ­cil
 
-**Caso I â€” PadrÃ£o bom, cota esgotada.** TrÃªs ocorrÃªncias, sem colisÃ£o, mas ¨«„¡½ÕÙ”)Í­¥±°¹½Ù„¹¼·©Ì¸((´€¨©•ÍÑ¥¹¼è€Ğ¨¨°µ…É…‘¼½µ¼ÁÉ¥½É¥‘…‘”‘¼·©ÌÍ•Õ¥¹Ñ”¸(´;¼ƒ¤½¹™±¥Ñ¼‘”É•É…Ì¸A…‘Ë¼‰½´Í½‰É•Ù¥Ù”„ÑÉ¥¹Ñ„‘¥…Ì°”„•ÍÁ•É„ƒ¤Õ´Ñ•ÍÑ”(€„µ…¥Ì¸(´9Õ¹„Á—„•á—Ÿ¼‘”½Ñ„¸<Ñ•Ñ¼•á¥ÍÑ”©ÕÍÑ…µ•¹Ñ”Á…É„½Ì…Í½Ì•´ÅÕ”¥¹½µ½‘„¸((¨©…Í¼(ƒŠPA…‘Ë¼‰½´°½Ë…µ•¹Ñ¼‘”½¹Ñ•áÑ¼•ÍÑ½ÕÉ…‘¼¸¨¨ÅÕ¤„‘•¥Ï¼ƒ¤µ…¥Ì‘ÕÉ„è)…±Õµ„Í­¥±°ÁÉ•¥Í„€¨©Í…¥È¨¨Á…É„•ÍÑ„•¹ÑÉ…È¸M”¹•¹¡Õµ„µ•É•”Í…¥È°•ÍÑ„»¼)µ•É•”•¹ÑÉ…È¸1…ÉÕÉ„ƒ¤Í½µ„é•É¼°”•ÍÍ„ƒ¤„½¹Ù•ÉÍ„¡½¹•ÍÑ„ÅÕ”„µ…¥½É¥„‘½Ì)Í¥ÍÑ•µ…Ì•Ù¥Ñ„Ñ•È¸(
+**Caso I â€” padrÃ£o bom, cota esgotada.** TrÃªs ocorrÃªncias, sem colisÃ£o, mas jÃ¡ houve
+skill nova no mÃªs.
+
+- **Destino: 4**, marcado como prioridade do mÃªs seguinte.
+- NÃ£o Ã© conflito de regras. PadrÃ£o bom sobrevive a trinta dias, e a espera Ã© um teste
+  a mais.
+- Nunca peÃ§a exceÃ§Ã£o de cota. O teto existe justamente para os casos em que incomoda.
+
+**Caso J â€” padrÃ£o bom, orÃ§amento de contexto estourado.** Aqui a decisÃ£o Ã© mais dura:
+alguma skill precisa **sair** para esta entrar. Se nenhuma merece sair, esta nÃ£o
+merece entrar. Largura Ã© soma zero, e essa Ã© a conversa honesta que a maioria dos
+sistemas evita ter.

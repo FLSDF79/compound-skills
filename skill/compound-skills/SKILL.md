@@ -133,7 +133,7 @@ novelty% = 100 − overlap%
 | **31–70%** | **UPGRADE** | mantém | reescrita robusta, absorve conceitos **e** tarefas |
 | **71–100%** | **SUPERSEDE** | novo | vira stub de 5 linhas apontando para a nova |
 
-**Na dúvida, superestime o overlap.** Errar para menos custa um patch. Errar
+**Na dúvida, superestime o overlap.** Errar para menos skill custa um patch. Errar
 para mais custa uma colisão permanente que ninguém detecta.
 
 Detalhes e anti-padrões: `references/novelty.md`.
@@ -207,9 +207,15 @@ python3 scripts/compound.py probe-run <skill>
 
 Detecta duas classes de falha invisíveis a olho nu:
 
-- **Gatilho quebrado** — �Ԃ lte o disparo de um caso e quebra o de outro sem nunca saber.
+- **Gatilho quebrado** — a edição removeu os termos que faziam a skill disparar
+- **Colisão** — outra skill instalada casa melhor com a frase do que a dona dela
 
-### 7. Registrar
+Falhou qualquer probe → **não publique**. Reverta.
+
+Mínimo: 3 `should` e 1 `should-not` por skill. `should-not` é o mais importante e o
+mais esquecido: descreve o território vizinho que a skill **não** pode invadir.
+
+## Portão 7 — Registrar
 
 ```bash
 python3 scripts/compound.py commit <caminho> --decisao <absorb|upgrade|supersede> \
