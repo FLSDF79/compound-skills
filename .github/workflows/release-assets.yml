@@ -1,0 +1,58 @@
+name: verified one-shot release assets
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Build, verify and upload release assets
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA256: 8e193b26a2200e1bcfb9480f8b3e0fbece5ce3308386e4206fce300327825a62
+          SKILL_SHA256: 49a6e12f036cd0680331011b885abd2679a9763165ad6b16f664747c584fd41a
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile, hashlib
+          repo=Path('.')
+          out=Path('dist')
+          out.mkdir()
+          source=out/'compound-skills-v2.2.0.zip'
+          skill=out/'compound-skills-v2.2.0.skill'
+          temporary=Path('.github/workflows/release-assets.yml')
+          def eligible(p,root):
+              rel=p.relative_to(root)
+              return (p.is_file() and '.git' not in rel.parts and 'dist' not in rel.parts
+                      and '__pycache__' not in rel.parts and p.suffix!='.pyc' and rel!=temporary)
+          def add_file(z,p,arc):
+              info=zipfile.ZipInfo(str(arc).replace('\\','/'),date_time=(2026,8,22,20,31,0))
+              info.compress_type=zipfile.ZIP_DEFLATED
+              info.external_attr=(0o100644 & 0xFFFF)<<16
+              z.writestr(info,p.read_bytes(),compress_type=zipfile.ZIP_DEFLATED,compresslevel=9)
+          with zipfile.ZipFile(source,'w') as z:
+              for p in sorted(x for x in repo.rglob('*') if eligible(x,repo)):
+                  add_file(z,p,Path('compound-skills')/p.relative_to(repo))
+          skillroot=repo/'skill'/'compound-skills'
+          with zipfile.ZipFile(skill,'w') as z:
+              for p in sorted(x for x in skillroot.rglob('*') if eligible(x,skillroot)):
+                  add_file(z,p,Path('compound-skills')/p.relative_to(skillroot))
+          hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in (source,skill)}
+          (out/'SHA256SUMS.txt').write_text(''.join(f'{h}  {n}\n' for n,h in hashes.items()),encoding='utf-8')
+          print(hashes)
+          PY
+          printf '%s  %s\n' "$SOURCE_SHA256" dist/compound-skills-v2.2.0.zip | sha256sum -c -
+          printf '%s  %s\n' "$SKILL_SHA256" dist/compound-skills-v2.2.0.skill | sha256sum -c -
+          gh release upload v2.2.0 dist/compound-skills-v2.2.0.zip dist/compound-skills-v2.2.0.skill dist/SHA256SUMS.txt --clobber --repo FLSDF79/compound-skills
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git rm .github/workflows/release-assets.yml
+          git commit -m 'chore: remove one-shot release asset builder'
+          git push origin HEAD:main
