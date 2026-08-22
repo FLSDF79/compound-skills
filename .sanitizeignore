@@ -1,0 +1,2 @@
+# Testes contêm segredos FALSOS de propósito (validam o próprio scanner).
+tests/*
